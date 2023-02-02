@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection | Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.png')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/result.css')}}">
+    <link rel="stylesheet" href="../static/css/result.css">
+    <!-- <script src="{{url_for('static', filename='js/index.js')}}"></script> -->
+    <style>
+        h2, h3{
+            color:black;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header of the homepage-->
+    <header>
+        <img src="{{url_for('static', filename='images/favicon.png')}}" alt="">
+        <h1>MATRIX</h1>
+    </header>
+
+      <div class="my-container">
+        <div id="res">
+            <div id="output-img">
+                {% if dis_name == 'Healthy' %}
+                <img src="../static/images/green-leaf-vector-icon-isolated-recycle-ecology-icon-natural-leaf-icon-eco-nature-healthy-concept-eps-10_158224-115.jpg" alt="" id="inner-img">
+                {% else %}
+                <img src="../static/images/forbidden-leaf-icon-no-plant-leaf-symbol-vector-37896998.jpg" alt="" id="inner-img">
+                {% endif %}
+                <img src="{{plant_img}}" alt="Uploaded Image" id="main-img">
+            </div>
+            
+            {% for line in final_res %}
+            {% if d_percent in line %}
+            
+            <p id="dis-line"><img src="../static/images/icons8-checked-checkbox-48.png" alt="no-box" id="dis-check"><b>{{line}}</b></p>
+            {% else %}
+            
+            <p id="dis-line"><img src="../static/images/icons8-unchecked-checkbox-48.png" alt="no-box" id="dis-check"><b>{{line}}</b></p>
+            {% endif %}
+            <!-- <p><b>{{line}}</b></p> -->
+            {% endfor %}
+           
+            <a href="detect" id="det">Detect another?</a><br>
+        </div>
+        <div class="inner-div">
+            <div class="yb">
+                <h4><u>Youtube Links:</u></h4>
+                <ol>
+                    {% if dis_name == 'Cedar Rust' %}
+                    <abbr title="What is cedar rust and how to treat it"></abbr>
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/K9M8CkaIQho" title="What is cedar rust and how to treat it" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/qyryyAG13Ew" title="YouTube video player" frameborder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/htsQPpFpgV0" title="YouTube video player" frameborder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- <li><a href="https://youtu.be/K9M8CkaIQho" class="yb-link" target="_blank">What is cedar rust and how to treat it</a></li>
+                        <li><a href="https://youtu.be/qyryyAG13Ew" class="yb-link" target="_blank">What is cedar apple rust</a></li> -->
+                        <!-- <li><a href="https://youtu.be/htsQPpFpgV0" class="yb-link" target="_blank">How do I control apple rust on my apple tree</a></li> -->
+                    {% elif dis_name == 'Black Rot' %}
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/HT_qdcl0cp8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/agIwEBm7Zao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <!-- <li><a href="https://youtu.be/HT_qdcl0cp8" class="yb-link" target="_blank">What is apple black rot and solution</a></li>
+                        <li><a href="https://youtu.be/agIwEBm7Zao" class="yb-link" target="_blank">How to take care of Black Rot and Leaf Spots</a></li> -->
+                    
+                    {% elif dis_name == 'Potato Early Blight'%}    
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/PSXXoGrOyDg?start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/kCo2U3PJIik" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+                        <!-- <li><a href="https://youtu.be/PSXXoGrOyDg" class="yb-link" target="_blank">How to control potato blight</a></li>
+                        <li><a href="https://youtu.be/kCo2U3PJIik" class="yb-link" target="_blank">Potato Early blight</a></li> -->
+                    {% elif dis_name == 'Potato Late Blight'%}    
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/PSXXoGrOyDg?start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kCo2U3PJIik" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+                    <!-- <li><a href="https://youtu.be/PSXXoGrOyDg" class="yb-link" target="_blank">How to control potato blight</a></li>
+                        <li><a href="https://youtu.be/oUjN78chnkc" class="yb-link" target="_blank">Potato Late blight</a></li> -->
+                    {% elif dis_name == 'Late Blight'%}    
+                        <li><a href="https://hosstools.com/best-way-control-tomato-diseases/?gclid=Cj0KCQjw94WZBhDtARIsAKxWG--54bDyqF7Yn66tyf-SstnHPQmOpnvLfAw1NrCC0LXT_1nI7zfrw-kaArRsEALw_wcB" class="yb-link" target="_blank">Best way to control tomato related diseases</a></li>
+                        <li><a href="https://youtu.be/6waoRp6KC1k" class="yb-link" target="_blank">Tomato Early and Late blight</a></li>     
+                    {% elif dis_name == 'Early Blight'%}    
+                        <li><a href="https://hosstools.com/best-way-control-tomato-diseases/?gclid=Cj0KCQjw94WZBhDtARIsAKxWG--54bDyqF7Yn66tyf-SstnHPQmOpnvLfAw1NrCC0LXT_1nI7zfrw-kaArRsEALw_wcB" class="yb-link" target="_blank">Best way to control tomato related diseases</a></li>
+                        <li><a href="https://youtu.be/6waoRp6KC1k" class="yb-link" target="_blank">Tomato Early and Late blight</a></li>    
+                        
+                    {% elif dis_name == 'Scorch'%}    
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/RwSPmbzwbTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/-RZupvVTPhQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="150" height="100" src="https://www.youtube.com/embed/Ura5F3Rku7U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+                    <!-- <li><a href="https://youtu.be/RwSPmbzwbTw" class="yb-link" target="_blank">What causes leaf scorch</a></li>
+                        <li><a href="https://youtu.be/-RZupvVTPhQ" class="yb-link" target="_blank">How to revive a dying strawberry plant</a></li>
+                        <li><a href="https://youtu.be/Ura5F3Rku7U" class="yb-link" target="_blank">Why do strawberry leaves turn brown</a></li>    -->
+                    {% elif dis_name == 'Powdery Mildew'%}    
+                        <li><a href="https://youtu.be/A_xsjZ139g4" class="yb-link" target="_blank">Prevent & Treat Powdery Mildew</a></li>
+                        <li><a href="https://youtu.be/UVMS-4h5rPk" class="yb-link" target="_blank">How to: Treat Powdery White Mildew (A Complete Step by Step Guide)</a></li>
+                    {% elif dis_name == 'Healthy' %}
+                        <p style="color: green;"><h3>Not Applicable since, plant is healthy.</h3></p>
+                    {% endif %}
+                </ol>
+            </div>
+    
+            <div class="cure">
+                <h4><u>Possible Cure:</u></h4>
+                <ol>
+                    {% if dis_name == 'Cedar Rust' %}
+                        <li>Spraying apple trees with copper can be done to treat cedar apple rust and prevent other fungal infections.</li>
+                        <li>Fungicides with the active ingredient Myclobutanil are most effective in preventing rust.</li>
+                        <li>Spray trees and shrubs when flower buds first emerge until spring weather becomes consistently warm and dry. </li>
+                    {% elif dis_name == 'Black Rot' %}
+                        <li>Provide trees with adequate water.</li>
+                        <li>Captan and sulfur products are labeled for control of both scab and black rot.</li>
+                    
+                    {% elif dis_name == 'Potato Early Blight'%}    
+                        <li>The traditional approach to preventing potato blight used to involve spraying plants with copper-based fungicides such as Bordeaux mixture before blight arrived.</li>
+                        <li>As soon as you spot blight, you may be able to save your crop by cutting the foliage and stems down to ground level immediately</li>
+                    {% elif dis_name == 'Potato Late Blight'%}    
+                        <li>The traditional approach to preventing potato blight used to involve spraying plants with copper-based fungicides such as Bordeaux mixture before blight arrived.</li>
+                        <li>As soon as you spot blight, you may be able to save your crop by cutting the foliage and stems down to ground level immediately</li>
+                    {% elif dis_name == 'Late Blight'%}    
+                        <li>Keep tomato plants dry.</li>
+                        <li>Rotate crops. Ensure potatoes and tomatoes are not planted in the same soil for successive years.
+                        </li>
+                        <li>Support bush tomato plants with a stake to keep their leaves off the soil, or tie up cordon tomatoes regularly with soft twine to improve air circulation.</li>     
+                    {% elif dis_name == 'Late Blight' or dis_name=='Early Blight' %}    
+                    <li>Keep tomato plants dry.</li>
+                    <li>Rotate crops. Ensure potatoes and tomatoes are not planted in the same soil for successive years.
+                    </li>
+                    <li>Support bush tomato plants with a stake to keep their leaves off the soil, or tie up cordon tomatoes regularly with soft twine to improve air circulation.</li>     
+                        
+                    {% elif dis_name == 'Scorch'%}    
+                        <li>The creation of new plantings and strawberry patches is key to maintaining a consistent strawberry harvest, as older plants are more likely to show signs of severe infection.</li>
+                        <li>Several fungicides such as copper, dodine, folpet and captan, can be used to remove the fungus that causes leaf blight.</li>
+                        <!-- <li><a href="https://youtu.be/Ura5F3Rku7U" class="yb-link" target="_blank">Why do strawberry leaves turn brown</a></li>    -->
+                    {% elif dis_name == 'Powdery Mildew'%}    
+                        <li>Effective organic fungicides for treating powdery mildew include sulfur, lime-sulfur, neem oil, and potassium bicarbonate.</li>
+                        <li>Plant in sunnier spots, as powdery mildew tends to develop more often in shady areas.</li>
+                    {% elif dis_name == 'Healthy' %}
+                        <p style="text-align: center;"><h3>Not Applicable since, plant is healthy.</h3></p>
+                    {% endif %}
+                </ol>
+            </div>
+        </div>
+        
+      </div>
+      <button onclick="showVm();" id="show-more">View More</button>
+      
+      <div class="viewmore", id="vm">
+        <hr>
+        {% if dis_name == 'Cedar Rust' %}
+                <p>
+                    <h2>How to identify rust?</h2>
+ 
+                        These diseases require plants from two different families in order to complete their life cycle; one plant from the Cupressaceae family (red cedar, juniper) and the other from the Rosaceae family (crabapple, hawthorn, serviceberry). Symptoms are very different on each type of plant.
+                
+                       <h2> Signs and symptoms</h2>
+
+ Symptoms on apple, crabapple, hawthorn and other plants in the Rosaceae family
+Orange, round leaf spots from Cedar apple rust infection.
+
+Disease is most common on apple and crabapple. It occurs occasionally on hawthorn.
+Leaf spots are first yellow then turn bright orange-red, often with a bright red border.
+Small, raised, black dots form in the center of leaf spots on the upper leaf surface when the leaf spots mature.
+Very short (less than 1/10th inch), finger-like fungal tubes stick out from the lower surface of the leaf, directly below leaf spots.
+Small finger-like fungal tubes from cedar apple rust sticking out from the lower surface of the leaf.
+Cedar apple rust projections.
+The fungal tubes appear fringed when they open at the tip to release yellow to orange, powdery spores.
+Rarely, green to brown irregular spots with black dots form on the fruit surface. Fruit spots do not extend deep into the fruit.
+
+<p>For more information visit <a href="https://extension.umn.edu/plant-diseases/cedar-apple-rust"></a>.</p>
+
+</p>
+        {% elif dis_name == 'Black Rot' %}
+                        <p>
+                            <h2>How to identify black rot?</h2>
+<h3>Fruit symptoms</h3>
+Large brown rotten areas can form anywhere on the fruit but are most common on the blossom end.
+Brown to black concentric rings can often be seen on larger infections.
+The flesh of the apple is brown but remains firm.
+Small, black spots can be seen on older fruit infections. These are fungal spore producing structures, called pycnidia.
+Some fruit mummify (shrivel and dry out) and remain attached to the tree.
+Occasionally fruit are infected early in the season. This results in fruit that ripen early and are rotten at the core.
+<br><br>
+<h3>Leaf symptoms</h3>
+Infected leaves develop "frog-eye leaf spot.”The se are circular spots with purplish or reddish edges and light tan interiors.
+<br><br>
+<h3>Branch symptoms</h3>
+Cankers appear as a sunken, reddish-brown area on infected branches. Cankers often have rough or cracked bark.
+Cankers may be hard to see. If you see rotten fruit or frog-eye leaf spot, inspect your trees for cankers.
+Sunken cankers may appear:
+On the southwest side of young trees, where winter injury is common.
+Or at crotches where branches join the main trunk. These areas are typically the last to harden off in fall.
+<br><br>
+<h2>How does black rot survive and spread?</h2>
+Black rot is caused by the fungus Diplodia seriata (syn Botryosphaeria obtusa).
+The fungus can infect dead tissue as well as living trunks, branches, leaves and fruits.
+The black rot fungi survive Minnesota winters in branch cankers and mummified fruit (shriveled and dried fruit) attached to the tree.
+In wet weather, spores are released from these infections and spread by wind or splashing water.
+Leaf spots don’t release fungal spores.
+The fungus infects leaves and fruit through natural openings or minor wounds.
+Branches and the trunk are most likely to be infected through dead or damaged wood.
+Leaf spots don’t seriously affect the health of the tree unless many leaves turn yellow and fall off because of the infection (this is rare).
+<br><br>
+<h2>How does tree stress affect black rot?</h2>
+Minnesota’s severe cold often injures apple trees. Tree tissue that’s damaged by cold is susceptible to infection by black rot.
+Trees damaged by drought stress or waterlogged soils are more likely to be affected by black rot, including:
+Apple trees grown on sandy soils without supplemental irrigation.
+Trees that are not irrigated during particularly dry spells.
+Trees grown in poorly drained soils.
+Trees infected by fire blight often later develop black rot. Fireblight results in dead wood that is easily infected by the black rot fungus.
+
+<p>For more information visit <a href="https://extension.umn.edu/plant-diseases/black-rot-apple" target="_blank">extension.umn.edu</a>.</p>
+                        </p>
+                    
+        {% elif dis_name == 'Potato Early Blight'%}  
+                        <p>
+                            <h2>What is potato blight?</h2>
+
+Late blight can destroy potato crops in a fortnight.
+
+
+The plant disease that led to the Irish potato famine, late blight, is a widespread disease of the Solanaceae family. Often called potato blight or tomato blight because it particularly affects these crops, it can destroy your entire haul of potatoes in as little as ten days.
+
+Blight is a fungal disease caused by spores of Phytophthora infestans which are spread on the wind and which can also contaminate potato tubers in the soil. Here’s what you need to know about blight and what you can do to stop it.
+
+<h2>When does blight strike?</h2>
+Blight can strike as early as June in India.
+
+
+Warm, humid weather, especially during the late summer is a perfect breeding ground for blight. In southern counties of the UK, potato blight can strike as early as June, and though it’s most damaging to outdoor crops, it can affect greenhouse produce too.
+
+<h2>How does potato blight look like?</h2>
+Blight turns the leaves brown and fungal spores develop.
+
+
+Dark brown blotches appear around leaf tips and edges, spreading towards the middle, shrivelling and rotting the leaf. At the same time, white fungal spores develop on the undersides of the leaves, around the lesions, and further brown lesions develop on the stems. The leaves and stems rapidly blacken and rot, and the plant collapses.
+
+Spores are released on the wind and quickly spread to infect neighbouring plants. They're also washed into the soil where they can infect potato tubers causing a red-brown rot directly beneath the skin which slowly spreads towards the centre of the tuber.
+
+<h2>How does late blight spread?</h2>
+Late blight spreads really easily.
+
+
+Heavy rain washes the fungal spores of late blight into the soil, where it overwinters. The disease also persists in infected potato tubers left in the ground or on the compost heap. Sometimes these tubers grow the following year to produce infected shoots which release fungal spores onto the wind to infect new crops.
+                        </p>
+        {% elif dis_name == 'Potato Late Blight'%}    
+        <p>
+
+            <h2>What is potato blight?</h2>
+
+Late blight can destroy potato crops in a fortnight.
+
+
+The plant disease that led to the Irish potato famine, late blight, is a widespread disease of the Solanaceae family. Often called potato blight or tomato blight because it particularly affects these crops, it can destroy your entire haul of potatoes in as little as ten days.
+
+Blight is a fungal disease caused by spores of Phytophthora infestans which are spread on the wind and which can also contaminate potato tubers in the soil. Here’s what you need to know about blight and what you can do to stop it.
+<br><br>
+<h2>When does blight strike?</h2>
+Blight can strike as early as June in India.
+
+
+Warm, humid weather, especially during the late summer is a perfect breeding ground for blight. In southern counties of the UK, potato blight can strike as early as June, and though it’s most damaging to outdoor crops, it can affect greenhouse produce too.
+<br><br>
+<h2>How does potato blight look like?</h2>
+Blight turns the leaves brown and fungal spores develop.
+
+
+Dark brown blotches appear around leaf tips and edges, spreading towards the middle, shrivelling and rotting the leaf. At the same time, white fungal spores develop on the undersides of the leaves, around the lesions, and further brown lesions develop on the stems. The leaves and stems rapidly blacken and rot, and the plant collapses.
+
+Spores are released on the wind and quickly spread to infect neighbouring plants. They're also washed into the soil where they can infect potato tubers causing a red-brown rot directly beneath the skin which slowly spreads towards the centre of the tuber.
+<br><br>
+<h2>How does late blight spread?</h2>
+Late blight spreads really easily.
+
+
+Heavy rain washes the fungal spores of late blight into the soil, where it overwinters. The disease also persists in infected potato tubers left in the ground or on the compost heap. Sometimes these tubers grow the following year to produce infected shoots which release fungal spores onto the wind to infect new crops.
+        </p>
+        {% elif dis_name == 'Late Blight' %}    
+                        <p>
+                           <h2> What is Tomato Blight?</h2>
+Tomato blight is a fungal disease that can swiftly destroy an entire tomato crop if left untreated. Dark spots are a telltale sign blight may be in your garden, but the severity of the situation depends on which type of tomato blight is afflicting your plants. It often affects older leaves first, but it can also attack younger, healthy ones, as well as the fruits themselves.
+
+<br><br>
+<h2>3 Types of Blight and How to Identify Them</h2>
+If you notice blight-like lesions on your tomatoes, you’ll want to deduce which type you’re dealing with in order to handle it appropriately. These are the three most common types of tomato blight:
+
+1. Early blight: Caused by Alternaria solani or Alternaria tomatophila, early blight is difficult to deal with, but there’s still a chance you can save your tomato crop. Keep an eye out for brown spots with concentric rings. They can be found all over your plant, including on the tomatoes themselves. Remove and discard any aspect of your plants affected by these spots.
+<br>
+2. Late blight: If your plants look like they’re besieged by mold or mildew, it’s likely late blight, caused by the Phytophthora infestans fungus, has taken over your tomatoes. If you see any of its progenitors, take preventative measures right away to stop any sort of blight from overrunning your garden.
+<br>
+3. Septoria leaf spot: Septoria leaf spot is the least damaging type of blight, caused by the fungus Septoria lycopersici. You can find its tiny brown and black spots on the lower leaves of your tomato plants. If you remove the affected portions, you’re likely to nip the problem in the bud.
+<br><br>
+<h2>3 Steps to Treating Tomato Blight</h2>
+As soon as you start noticing blight-infected leaves, it’s time to act quickly. Here are three ways you can mitigate a tomato blight problem after spotting one:
+<br>
+1. Remove infected plant portions. The most essential aspect of treating blight is to remove and destroy any affected area of the tomato plant. If you notice any telltale signs, prune those sections from the plant and discard them far away from your garden. As long as any sections of the plant or soil are still suffering from the fungal disease, the spores are likely to spread again.
+<br>
+2. Use fungicide. Utilizing a fungicide is one key way you can address your blight problem. After removing any infected leaves, you can spray the surrounding area with a copper fungicide or biofungicide to help contain the problem if it hasn’t spread too far.
+<br>
+3. Add mulch to the soil. Using mulch can introduce nutrients into your soil and prevent the spores from spreading further through the air. This makes blight less likely to take root in the first place.
+                        </p>    
+        {% elif dis_name == 'Early Blight' %}    
+                        <p>
+                           <h2> What is Tomato Blight?</h2>
+Tomato blight is a fungal disease that can swiftly destroy an entire tomato crop if left untreated. Dark spots are a telltale sign blight may be in your garden, but the severity of the situation depends on which type of tomato blight is afflicting your plants. It often affects older leaves first, but it can also attack younger, healthy ones, as well as the fruits themselves.
+
+<br><br>
+<h2>3 Types of Blight and How to Identify Them</h2>
+If you notice blight-like lesions on your tomatoes, you’ll want to deduce which type you’re dealing with in order to handle it appropriately. These are the three most common types of tomato blight:
+
+1. Early blight: Caused by Alternaria solani or Alternaria tomatophila, early blight is difficult to deal with, but there’s still a chance you can save your tomato crop. Keep an eye out for brown spots with concentric rings. They can be found all over your plant, including on the tomatoes themselves. Remove and discard any aspect of your plants affected by these spots.
+<br>
+2. Late blight: If your plants look like they’re besieged by mold or mildew, it’s likely late blight, caused by the Phytophthora infestans fungus, has taken over your tomatoes. If you see any of its progenitors, take preventative measures right away to stop any sort of blight from overrunning your garden.
+<br>
+3. Septoria leaf spot: Septoria leaf spot is the least damaging type of blight, caused by the fungus Septoria lycopersici. You can find its tiny brown and black spots on the lower leaves of your tomato plants. If you remove the affected portions, you’re likely to nip the problem in the bud.
+<br><br>
+<h2>3 Steps to Treating Tomato Blight</h2>
+As soon as you start noticing blight-infected leaves, it’s time to act quickly. Here are three ways you can mitigate a tomato blight problem after spotting one:
+<br>
+1. Remove infected plant portions. The most essential aspect of treating blight is to remove and destroy any affected area of the tomato plant. If you notice any telltale signs, prune those sections from the plant and discard them far away from your garden. As long as any sections of the plant or soil are still suffering from the fungal disease, the spores are likely to spread again.
+<br>
+2. Use fungicide. Utilizing a fungicide is one key way you can address your blight problem. After removing any infected leaves, you can spray the surrounding area with a copper fungicide or biofungicide to help contain the problem if it hasn’t spread too far.
+<br>
+3. Add mulch to the soil. Using mulch can introduce nutrients into your soil and prevent the spores from spreading further through the air. This makes blight less likely to take root in the first place.
+                        </p>    
+        {% elif dis_name == 'Scorch'%}  
+        <p>  
+        <h2>Introduction</h2>
+        Skip to Introduction
+        Leaf Scorch is the most common leaf disease in matted row systems in North Carolina but rarely occurs in annual production systems. The pathogen can survive and cause disease at a wide range of temperatures, and has been reported to cause disease year-round on perennial crops. Replanting frequently is recommended in these systems since the disease usually is not severe the first or second year after planting. Because of this, leaf scorch is not a major problem in annual systems.
+        <br>
+        <h2>Symptoms and Signs</h2>
+        Skip to Symptoms and Signs
+        Leaf scorch symptoms are very similar to the early stages of common (Mycosphaerella) leaf spot, with irregular dark purple spots being scattered over the upper leaf surface. As the spots enlarge, they begin to look like drops of tar, and are actually the accumulations of black fruiting bodies (acervuli) of the fungus. The centers of the spots remain purple (in Mycosphaerella leaf spot they are white) and there is no well-defined lesion border. In heavy infections, these regions coalesce and the tissue between the lesions often takes on a purplish to bright red color that is dependent on cultivar, temperature, or other factors. The leaves eventually turn brown, dry up, and curl at the margins giving the leaf a scorched appearance. Examination of the acervuli and conidial morphology can help to distinguish between leaf spot and leaf scorch at this advanced stage of disease. On the upper leaf surfaces of leaf scorch lesions, the acervuli are dark with glistening spore masses and dark apothecia. Petiole lesions are elongate, sunken, with a purplish to brown color and can kill the leaf by girdling the petiole. Runners, fruit stalks, fruit and caps can also become infected. Plants may become weakened and the number and vigor of crowns reduced. Infection predisposes the plants to winter and drought stress. In severe infestations, flowers and fruit may die. Overall, there can be a serious reduction in yield in matted row systems. It has not been observed as a yield-reducing problem in annual production systems.
+        <br>
+        
+        <h2>Disease Cycle</h2>
+        In annual production systems, the disease can come on transplants or tips and build up in the plug production phase in the early fall in the field. However, the pathogen does not cause damage the following spring. In the matted row system, the population can build up to damaging levels. Spores are produced in the spring and midsummer on lower leaf surfaces of dead leaves infected in the previous year, and are spread by wind and splashing rain. Disease increase is favored by leaf wetness during warm weather (68-86°F), and is likely to become more significant on older plantings of susceptible varieties. One ascospore generation (the starting sproes) and several overlapping generations of conidia (spores) are produced every year. Apothecia, a small mushroom-like structure, generally form on infected leaves in the fall and forcibly discharge ascospores, which are wind dispersed, in the springtime. Acervuli are found throughout the season in lesions or on residue of the foliage. Under dry conditions the acervuli can go into dormancy, but once moist conditions return, they again become active and exude conidia in a sticky mass. The conidia are disseminated to new infection sites where they directly penetrate and grow intercellularly.
+        </p>
+        {% elif dis_name == 'Powdery Mildew'%}    
+        <p>
+            <h2>What Is Powdery Mildew?</h2>
+Powdery mildew is a fungal disease that affects a wide variety of plants. There are many different species of powdery mildew, and each species attacks a range of different plants. In the garden, commonly affected plants include cucurbits (squash, pumpkins, cucumbers, melons), nightshades (tomatoes, eggplants, peppers), roses, and legumes (beans, peas).
+
+When the fungus begins to take over one of your plants, a layer of mildew made up of many spores forms across the top of the leaves. These spores are then carried to other plants by the wind. Powdery mildew can slow down the growth of your plant and, if the infection is severe enough, will reduce fruit yield and quality. 
+<br><br>
+<h2>How Does Powdery Mildew Spread?</h2>
+Powdery mildew spores typically drift into your garden with the wind, but if you’ve had powdery mildew occur in the past, new outbreaks may also come from dormant spores in old vegetative material or weeds nearby.
+
+Unlike many other fungal diseases, powdery mildew thrives in warm (60-80°F / 15-27°C), dry climates, though it does require fairly high relative humidity (i.e., humidity around the plant) to spread. In cooler, rainy areas, it does not spread as well, and it is also slowed down by temperatures higher than 90°F (32°C). It tends to affect plants in shady areas more than those in direct sun, too.
+<br><br>
+<h2>Identification</h2>
+How to Identify Powdery Mildew
+Plants infected with powdery mildew look as if they have been dusted with flour.
+Powdery mildew usually starts off as circular, powdery white spots, which can appear on leaves, stems, and sometimes fruit.
+Powdery mildew usually covers the upper part of the leaves, but may grow on the undersides as well.
+Young foliage is most susceptible to damage. Leaves turn yellow and dry out.
+The fungus might cause some leaves to twist, break, or become disfigured.
+The white spots of powdery mildew will spread to cover most of the leaves or affected areas.
+The leaves, buds, and growing tips will become disfigured as well. These symptoms usually appear late in the growing season. 
+        </p>
+        
+                        <!-- <p style="color: green;"><h2>The plant is healthy</h2></p> -->
+        {% endif %}
+        
+        
+        <!-- <button id="download-page" onclick="window.print();">Download this page</button> -->
+        <button onclick="closeVm();" id="show-less">View Less</button>
+      </div>
+      <script>
+        x = document.getElementById('vm');
+        x.style.display = 'none';
+
+        function showVm(){
+            x.style.display = 'block';
+            window.scrollBy(0,400);
+            y = document.getElementById('show-more');
+            y.style.display = 'none';
+            z = document.getElementById('show-less');
+            z.style.display = 'block';
+        }
+
+        function closeVm(){
+            x.style.display = 'none';
+            
+            y = document.getElementById('show-less');
+            y.style.display = 'none';
+
+            z = document.getElementById('show-more');
+            z.style.display = 'block';
+
+            window.scrollTo(0, 0);
+        }
+      </script>
+
+    <!-- <a href="/">Home</a> -->
+    <footer>
+        <p>&copy Created by team MATRIX</p>
+    </footer>
+</body>
+</html>
